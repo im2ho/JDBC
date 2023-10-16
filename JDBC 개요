@@ -29,12 +29,12 @@
 
 <예제코드>
 
-String driver = "oracle.jdbc.driver.OracleDriver";
-String url = "jdbc:oracle:thin:@localhost:1521:xe";
-String user = "유저명";
-String password = "비밀번호";
-
-Class.forName(driver); //JDBC 드라이버 클래스를 동적으로 load하는데 사용
-Connection con = DriverManager.getConnection(url, user, password);
-PreparedStatement selectStateMent = con.preparedStatement(쿼리변수);
-ResultSet resultSet = selectStateMent.excuteQuery(); //결과집합 반환
+  String driver = "oracle.jdbc.driver.OracleDriver";
+  String url = "jdbc:oracle:thin:@localhost:1521:xe";
+  String user = "유저명";
+  String password = "비밀번호";
+  
+  Class.forName(driver); //JDBC 드라이버 클래스를 동적으로 load하는데 사용
+  Connection con = DriverManager.getConnection(url, user, password);
+  PreparedStatement selectStateMent = con.preparedStatement(쿼리변수);
+  ResultSet resultSet = selectStateMent.excuteQuery(); //결과집합 반환
