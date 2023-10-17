@@ -1,0 +1,14 @@
+package com.kh.db.oraclesample;
+
+public class DBConnection {
+
+	public static void main(String[] args) {
+		//1. 드라이버 연걸
+		String driver = "oracle.jdbc.drver.OracleDriver";
+		//2. ORACLE 내 컴퓨터 연결
+		//								나의IP주소:port번호
+		String url = "jdbc:oracle:thin:@lacalhost:1521:xe";
+
+	}
+
+}
