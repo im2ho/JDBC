@@ -1,4 +1,4 @@
-package com.kh.db.oraclesample;
+package com.kh.oracledb.CRUD;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,12 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
 
-public class DBConnection {
+public class SELECT_sample {
 
 	public static void main(String[] args) {
 		//DBConnection d = new DBConnection();
 		//d.SelectKHCAFE();
-		intsertBank();
+		SelectKHCAFE();
 	} //main()
 	
 	static void SelectBank() {
@@ -80,7 +80,8 @@ public class DBConnection {
 		}
 	} //SelectKHCAFE()
 	
-	static void SelectWhile() {
+	//while
+	static void SelectAll() {
 		String driver = "oracle.jdbc.driver.OracleDriver";
 
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -99,7 +100,8 @@ public class DBConnection {
 			selectState.setString(2,targetAN[1]); //targetAN[0]: 2번째 ?에 들어갈 값
 			ResultSet result = selectState.executeQuery();
 			
-			//값의 존재 여부 판단
+			//isBeforeFirst() : 쿼리한 결과의 커서가, 첫 로우 바로 앞이면 true / 첫 로우 바로 앞이 아니거나, 결과 로우가 없으면 false.
+			//result가 읽어온 값의 존재 여부 판단
 			if(!result.isBeforeFirst()) { //데이터가 없을 경우를 나타내기 위해 조건을 false로 설정
 				System.out.println("존재하는 데이터가 없습니다.");
 			}
@@ -118,7 +120,8 @@ public class DBConnection {
 		}
 	}
 	
-	static void SelectIf() {
+	//if
+	static void SelectOne() {
 		String driver = "oracle.jdbc.driver.OracleDriver";
 
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -162,33 +165,5 @@ public class DBConnection {
 		}
 	}
 
-	static void intsertBank() {
-		String url = "jdbc:oracle:thin:@localhost:1521:xe"; //thin : 100% 자바 클라이언트 드라이버
-		String user = "khbank";
-		String password = "khbank";
-		//Connection con = null; //Connection : java.sql 기본 제공
-		
-		try {
-			Connection con = DriverManager.getConnection(url, user, password);
-			String insertQuery = 
-					"INSERT INTO bank (account_id, account_number, account_name, balance, branch_name, last_transaction_date)"
-					+ "VALUES(?,?,?,?,?,?)";
-			
-			PreparedStatement insertState = con.prepareStatement(insertQuery);
-			
-			insertState.setInt(1, 100);
-			insertState.setString(2, "333302578912");
-			insertState.setString(3, "호랑이");
-			insertState.setDouble(4, 500);
-			insertState.setString(5, "역삼");
-			insertState.setDate(6, Date.valueOf("2023-10-17"));
-			
-			int rowsInsert = insertState.executeUpdate();
-			System.out.println(rowsInsert + "row 추가 완료");
-			
-			
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-	}
+
 }
