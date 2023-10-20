@@ -1,0 +1,85 @@
+<SELECT>
+
+String url = "jdbc:oracle:thin:@localhost:1521:xe";
+String user = "say";
+String password = "say";
+
+try{
+ Connection con = DriverManager.getConnection(url, user, password);
+ String selectQuery = "어쩌구";
+ PreparedStatement selectState = con.prepareStatement(selectQuery);
+ 
+ ResultSet result = selectState.executeQuery();
+
+ while(result.next()){
+  int num = result.getInt(num);
+
+  System.out.println("숫자: " + num);
+  }
+} catch(SQLException e){
+ e.pringStackTrace();
+}
+------------------------------------------------------------
+<INSERT>
+
+String url = "jdbd:oracle:thin:@localhost:1521:xe";
+String user = "ㅇㄹㄴㅇ";
+String password = "dfs";
+
+try{
+ Connection con = DriverManager.getConnection(url,user,password);
+ String insertQuery = "INSERT INTO t (a) VALUES (?)";
+ PreparedStatement insertState = con.prepareStatement(insertQuery);
+ 
+ insertState.setInt(1,7);
+ int rowInsert = insertState.executeUpdate();
+
+} catch(SQLException e){
+ e.printStackTrace();
+}
+------------------------------------------------------------
+<setInt(), setString().. 메서드 활용>
+
+ String selectQuery = "SELECT * FROM t WHERE col1=?, col2=?";
+ selectQuery.setInt(1, 7);
+ selectQuery.setString(2,"와앙");
+
+------------------------------------------------------------
+<메서드 생성>
+
+public class 어쩌구{
+  
+  public static void main(String[] args){
+    insertSQL( );
+  } //main( )
+
+  static void insertSQL( ) {
+    
+    String url = "jdbc:oracle:thin:@localhost:1521:xe";
+    String user = "aa";
+    String password = "aaa";
+
+    try {
+      Connection con = DriverManager.getConnection(url, user, password);
+      String insertQuery = "INSERT INTO t (a, b) VALUES(?, ?)";
+      PreparedStatement insertState = con.prepareStatement(insertQuery);
+      
+      //메서드 작성하고 오겟음다 총총..
+      insertValues(insertState, 1, 3); //첫번째 ?에 3
+      insertValues(insertState, 2, 5); //첫번째 ?에 4
+
+      insertState.close( );
+
+    } catch (SQLException e) { 
+       e.printStackTrace( );
+      }
+
+  } //insertSQL( )
+  
+  static void insertValues(PreparedStatement ps, int a, int b ) throws SQLException {
+    ps.setInt(1, a);
+    ps.setInt(2, b);
+    ps.executeUpdate( );
+  } //insertValues( )
+
+} //class
