@@ -49,7 +49,7 @@ public class Cafe_Model {
 			int resultRows = updateState.executeUpdate();
 			
 			if(resultRows==0) {
-				System.out.println("조회되지 않는 카페 정보입니다\n");
+				System.out.println("조회되지 않는 카페 정보입니다");
 			}
 			
 		} catch (SQLException e) {
@@ -70,7 +70,7 @@ public class Cafe_Model {
 			int resultRows = updateState.executeUpdate();
 			
 			if(resultRows==0) {
-				System.out.println("조회되지 않는 카페 정보입니다\n");
+				System.out.println("조회되지 않는 카페 정보입니다");
 			}
 			
 		} catch (Exception e) {
