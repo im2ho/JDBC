@@ -1,5 +1,6 @@
 package com.kh.MVC.Singleton.UPDATE;
 
+//제품명을 입력받고, 해당하는 제품의 가격을 수정하는 패턴을 구현하겟습니다
 public class Product_DTO {
 
 	//멤버변수

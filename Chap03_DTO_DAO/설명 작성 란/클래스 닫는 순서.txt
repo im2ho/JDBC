@@ -1,0 +1,6 @@
+<ÀÛ¾÷ ´Ý´Â ¼ø¼­>
+
+1. °á°ú ÁýÇÕ ´Ý±â ResultSet()
+2. SQL ¿¬°á ´Ý±â PreparedStatement()
+3. SQL ´Ý±â Connection()
+4. Scanner() ´Ý±â ex) sc.close();
